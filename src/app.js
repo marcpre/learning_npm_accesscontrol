@@ -12,7 +12,7 @@ app.get('/test', (req, res) => {
 }
 })
 
-// Servier
+// Service
 const port = process.env.APP_PORT || 8080
 const host = process.env.APP_HOST || 'localhost'
 
