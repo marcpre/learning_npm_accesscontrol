@@ -1,15 +1,18 @@
 const express = require('express')
+const AccessControl = require('accesscontrol')
+
 const app = express()
 const grants = require('./config/accesscontrol')
-const ac = new AccessControl(grants);
+
+const ac = new AccessControl(grants)
 
 app.get('/test', (req, res) => {
-  const permission = ac.can(req.user.role).readAny('test');
+  const permission = ac.can(req.user.role).readAny('test')
   if (permission.granted) {
-  res.send('Hello World!')
+    res.send('Hello World!')
   } else {
-    res.status(403).end();
-}
+    res.status(403).end()
+  }
 })
 
 // Service
